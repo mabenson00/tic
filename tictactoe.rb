@@ -5,9 +5,14 @@ class Game
     @board = [[nil,nil,nil], [nil,nil,nil], [nil,nil,nil]]
   end
 
+  def duplicate(obj) ## when I did board = @board.dup it still referenced @board, and changed it when i was trying to print
+    Marshal::load(Marshal.dump(obj))
+  end
+
   def play_game
     print_board
   end
+
 
   # def set_up_board
   #   ## two options: all nil, add when there's an element || or put the space IDs in, but don't print them. and just find and replace.
@@ -19,12 +24,13 @@ class Game
   def print_board
     letter = "A"
     p " 1 2 3"
-    board = @board.dup
+    board = duplicate(@board)
     board.each do |row|
       row.unshift(letter)
       p row.join(" |")[0..-2]
       letter.next!
     end
+    p @board
   end
 
   def choose_your_player
