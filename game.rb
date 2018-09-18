@@ -53,7 +53,6 @@ class Game
     @players.each{|p| p.restart} ## reset open spaces
   end
 
-
   def take_turns
     until @complete
       check_turn

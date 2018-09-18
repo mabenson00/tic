@@ -12,9 +12,7 @@ class Board
    Marshal::load(Marshal.dump(obj))
   end
 
-
   def find_spot(position, team)
-    p position[0]
     row = find_row(position[0])
     pos = (position[1].to_i) -1
     if row[pos] == nil
@@ -43,8 +41,6 @@ class Board
       letter.next!
     end
   end
-
-
 
   def check_for_winner
     board = duplicate(@spaces)
